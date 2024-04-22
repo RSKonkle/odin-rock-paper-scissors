@@ -16,18 +16,25 @@ function getHumanChoice() {
 }
 
 function playRound(humanChoice, computerChoice) {
-    if (humanChoice === computerChoice)
+    if (humanChoice === computerChoice) {
         return (`Tie! You both chose ${humanChoice.charAt(0).toUpperCase() + humanChoice.slice(1)}`);
+    }
 
     else if (
         (humanChoice === "rock" && computerChoice === "paper") ||
         (humanChoice === "paper" && computerChoice === "scissors") ||
         (humanChoice === "scissors" && computerChoice === "rock")
-        ) return (`You lose! ${computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1)} \
-beats ${humanChoice.charAt(0).toUpperCase() + humanChoice.slice(1)}.`)
+        ){
+        console.log(`You lose! ${computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1)} \
+beats ${humanChoice.charAt(0).toUpperCase() + humanChoice.slice(1)}.`);
+        computerScore++;
+    }
 
-    else return (`You win! ${humanChoice.charAt(0).toUpperCase() + humanChoice.slice(1)} \
-beats ${computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1)}!`)
+    else { 
+        console.log(`You win! ${humanChoice.charAt(0).toUpperCase() + humanChoice.slice(1)} \
+beats ${computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1)}!`);
+        humanScore++;
+    }
 }
 
 let computerScore = 0;
