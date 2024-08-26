@@ -22,7 +22,7 @@ function playRound(humanChoice) {
     let computerChoice = getComputerChoice();
 
     if (humanChoice === computerChoice) {
-    console.log(`Tie! You both chose ${humanChoice.charAt(0).toUpperCase() + humanChoice.slice(1)}`);
+    results.textContent = (`Tie! You both chose ${humanChoice.charAt(0).toUpperCase() + humanChoice.slice(1)}`);
     }
     
     else if (
@@ -30,13 +30,17 @@ function playRound(humanChoice) {
         (humanChoice === "paper" && computerChoice === "scissors") ||
         (humanChoice === "scissors" && computerChoice === "rock")
     ){
-        console.log(`You lose! ${computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1)} \
+        results.textContent = (`You lose! ${computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1)} \
 beats ${humanChoice.charAt(0).toUpperCase() + humanChoice.slice(1)}.`);
+        cScore += 1;
+        score.textContent = `Player: ${pScore}, Computer: ${cScore}`;
     }
     
     else { 
-        console.log(`You win! ${humanChoice.charAt(0).toUpperCase() + humanChoice.slice(1)} \
+        results.textContent = (`You win! ${humanChoice.charAt(0).toUpperCase() + humanChoice.slice(1)} \
 beats ${computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1)}!`);
+        pScore += 1;
+        score.textContent = `Player: ${pScore}, Computer: ${cScore}`;
     }
 }
 //// FUNCTIONS ////
@@ -49,5 +53,12 @@ const scissorsButton = document.querySelector("#scissors");
 rockButton.addEventListener("click", () => playRound("rock"));
 paperButton.addEventListener("click", () => playRound("paper"));
 scissorsButton.addEventListener("click", () => playRound("scissors"));
+
+const results = document.querySelector(".results");
+const score = document.querySelector(".score");
+
+pScore = 0;
+cScore = 0;
+score.textContent = `Player: ${pScore}, Computer: ${cScore}`;
 ////   LOGIC  ////
 
