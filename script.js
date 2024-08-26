@@ -1,3 +1,5 @@
+//// FUNCTIONS ////
+// Function to get computer choice of RPS, randomly generated
 function getComputerChoice() {
     let randomNum = Math.random();
 
@@ -9,11 +11,13 @@ function getComputerChoice() {
         return "scissors";
 }
 
+// Function to take human choice of RPS, through keyboard input
 function getHumanChoice() {
     let choice = prompt("Choose your weapon: Rock, Paper, or Scissors?");
     return choice.toLowerCase();
 }
 
+// Function to play one full round of RPS, calling the above choice functions
 function playGame() {
     let computerScore = 0;
     let humanScore = 0;
@@ -40,12 +44,12 @@ beats ${computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1)}!`);
         }
     }
 
-    playRound(getHumanChoice(), getComputerChoice());
-    playRound(getHumanChoice(), getComputerChoice());
-    playRound(getHumanChoice(), getComputerChoice());
-    playRound(getHumanChoice(), getComputerChoice());
-    playRound(getHumanChoice(), getComputerChoice());
-    console.log(`Final Score: Player - ${humanScore}, Computer ${computerScore}`);
+   playRound(getHumanChoice(), getComputerChoice());
+   playRound(getHumanChoice(), getComputerChoice());
+   playRound(getHumanChoice(), getComputerChoice());
+   playRound(getHumanChoice(), getComputerChoice());
+   playRound(getHumanChoice(), getComputerChoice());
+   console.log(`Final Score: Player - ${humanScore}, Computer ${computerScore}`);
 }
+//// FUNCTIONS ////
 
-playGame()
