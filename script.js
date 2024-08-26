@@ -42,6 +42,17 @@ beats ${computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1)}!`);
         pScore += 1;
         score.textContent = `Player: ${pScore}, Computer: ${cScore}`;
     }
+
+    if (pScore >= 5 || cScore >= 5) {
+        if (pScore > cScore) {
+            winner = "Player";
+        }
+        else {
+            winner = "Computer";
+        }
+        results.textContent = `${winner} wins! Final score: ${pScore} - ${cScore}`
+        score.textContent = ''
+    }
 }
 //// FUNCTIONS ////
 
