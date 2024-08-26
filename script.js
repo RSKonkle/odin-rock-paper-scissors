@@ -17,39 +17,37 @@ function getHumanChoice() {
     return choice.toLowerCase();
 }
 
-// Function to play one full round of RPS, calling the above choice functions
-function playGame() {
-    let computerScore = 0;
-    let humanScore = 0;
+// Function to play a single round of RPS, calling the above choice functions
+function playRound(humanChoice) {
+    let computerChoice = getComputerChoice();
 
-    function playRound(humanChoice, computerChoice) {
-        if (humanChoice === computerChoice) {
-            console.log(`Tie! You both chose ${humanChoice.charAt(0).toUpperCase() + humanChoice.slice(1)}`);
-        }
-    
-        else if (
-            (humanChoice === "rock" && computerChoice === "paper") ||
-            (humanChoice === "paper" && computerChoice === "scissors") ||
-            (humanChoice === "scissors" && computerChoice === "rock")
-            ){
-            console.log(`You lose! ${computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1)} \
-beats ${humanChoice.charAt(0).toUpperCase() + humanChoice.slice(1)}.`);
-            computerScore++;
-        }
-    
-        else { 
-            console.log(`You win! ${humanChoice.charAt(0).toUpperCase() + humanChoice.slice(1)} \
-beats ${computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1)}!`);
-            humanScore++;
-        }
+    if (humanChoice === computerChoice) {
+    console.log(`Tie! You both chose ${humanChoice.charAt(0).toUpperCase() + humanChoice.slice(1)}`);
     }
-
-   playRound(getHumanChoice(), getComputerChoice());
-   playRound(getHumanChoice(), getComputerChoice());
-   playRound(getHumanChoice(), getComputerChoice());
-   playRound(getHumanChoice(), getComputerChoice());
-   playRound(getHumanChoice(), getComputerChoice());
-   console.log(`Final Score: Player - ${humanScore}, Computer ${computerScore}`);
+    
+    else if (
+        (humanChoice === "rock" && computerChoice === "paper") ||
+        (humanChoice === "paper" && computerChoice === "scissors") ||
+        (humanChoice === "scissors" && computerChoice === "rock")
+    ){
+        console.log(`You lose! ${computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1)} \
+beats ${humanChoice.charAt(0).toUpperCase() + humanChoice.slice(1)}.`);
+    }
+    
+    else { 
+        console.log(`You win! ${humanChoice.charAt(0).toUpperCase() + humanChoice.slice(1)} \
+beats ${computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1)}!`);
+    }
 }
 //// FUNCTIONS ////
+
+////   LOGIC   ////
+const rockButton = document.querySelector("#rock");
+const paperButton = document.querySelector("#paper");
+const scissorsButton = document.querySelector("#scissors");
+
+rockButton.addEventListener("click", () => playRound("rock"));
+paperButton.addEventListener("click", () => playRound("paper"));
+scissorsButton.addEventListener("click", () => playRound("scissors"));
+////   LOGIC  ////
 
